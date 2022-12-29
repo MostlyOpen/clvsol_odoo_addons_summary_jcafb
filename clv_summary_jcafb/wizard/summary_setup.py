@@ -65,7 +65,7 @@ class SummarySetUp(models.TransientModel):
 
             reference = summary.reference
             model = summary.model
-            # reference_id = reference[len(model) + 1:]
+            reference_id = reference[len(model) + 1:]
 
             _logger.info(u'%s %s', '>>>>>', reference)
             _logger.info(u'%s %s', '>>>>>>>>>>', model)
@@ -90,10 +90,20 @@ class SummarySetUp(models.TransientModel):
             #     person_aux = PersonAux.search([('id', '=', reference_id)])
             #     person_aux._person_aux_summary_setup(self.dir_path, self.file_name)
 
-            # if summary.model == 'hr.employee':
-            #     Employee = self.env['hr.employee']
-            #     employee = Employee.search([('id', '=', reference_id)])
-            #     employee._employee_summary_setup(self.dir_path, self.file_name)
+            if summary.model == 'clv.patient':
+                Patient = self.env['clv.patient']
+                patient = Patient.search([('id', '=', reference_id)])
+                patient._patient_summary_setup(self.dir_path, self.file_name)
+
+            if summary.model == 'clv.patient_aux':
+                PatientAux = self.env['clv.patient_aux']
+                patient_aux = PatientAux.search([('id', '=', reference_id)])
+                patient_aux._patient_aux_summary_setup(self.dir_path, self.file_name)
+
+            if summary.model == 'hr.employee':
+                Employee = self.env['hr.employee']
+                employee = Employee.search([('id', '=', reference_id)])
+                employee._employee_summary_setup(self.dir_path, self.file_name)
 
         return True
 
