@@ -35,7 +35,7 @@
     <!-- More button Action -->
     <record id="clv_summary_setup_action" model="ir.actions.act_window">
         <field name="name">Summary Set Up</field>
-        <field name="binding_model_id" ref="model_clv_summary"/>
+        <field name="binding_model_id" ref="clv_summary.model_clv_summary"/>
         <field name="res_model">clv.summary.summary_setup</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>

@@ -46,7 +46,6 @@ class SummarySetUp(models.TransientModel):
         default=_default_file_name
     )
 
-    # @api.multi
     def _reopen_form(self):
         self.ensure_one()
         action = {
@@ -59,7 +58,6 @@ class SummarySetUp(models.TransientModel):
         }
         return action
 
-    # @api.multi
     def do_summary_setup(self):
         self.ensure_one()
 
@@ -67,39 +65,38 @@ class SummarySetUp(models.TransientModel):
 
             reference = summary.reference
             model = summary.model
-            reference_id = reference[len(model) + 1:]
+            # reference_id = reference[len(model) + 1:]
 
             _logger.info(u'%s %s', '>>>>>', reference)
             _logger.info(u'%s %s', '>>>>>>>>>>', model)
 
-            if summary.model == 'clv.address':
-                Address = self.env['clv.address']
-                address = Address.search([('id', '=', reference_id)])
-                address._address_summary_setup(self.dir_path, self.file_name)
+            # if summary.model == 'clv.address':
+            #     Address = self.env['clv.address']
+            #     address = Address.search([('id', '=', reference_id)])
+            #     address._address_summary_setup(self.dir_path, self.file_name)
 
-            if summary.model == 'clv.family':
-                Family = self.env['clv.family']
-                family = Family.search([('id', '=', reference_id)])
-                family._family_summary_setup(self.dir_path, self.file_name)
+            # if summary.model == 'clv.family':
+            #     Family = self.env['clv.family']
+            #     family = Family.search([('id', '=', reference_id)])
+            #     family._family_summary_setup(self.dir_path, self.file_name)
 
-            if summary.model == 'clv.person':
-                Person = self.env['clv.person']
-                person = Person.search([('id', '=', reference_id)])
-                person._person_summary_setup(self.dir_path, self.file_name)
+            # if summary.model == 'clv.person':
+            #     Person = self.env['clv.person']
+            #     person = Person.search([('id', '=', reference_id)])
+            #     person._person_summary_setup(self.dir_path, self.file_name)
 
-            if summary.model == 'clv.person_aux':
-                PersonAux = self.env['clv.person_aux']
-                person_aux = PersonAux.search([('id', '=', reference_id)])
-                person_aux._person_aux_summary_setup(self.dir_path, self.file_name)
+            # if summary.model == 'clv.person_aux':
+            #     PersonAux = self.env['clv.person_aux']
+            #     person_aux = PersonAux.search([('id', '=', reference_id)])
+            #     person_aux._person_aux_summary_setup(self.dir_path, self.file_name)
 
-            if summary.model == 'hr.employee':
-                Employee = self.env['hr.employee']
-                employee = Employee.search([('id', '=', reference_id)])
-                employee._employee_summary_setup(self.dir_path, self.file_name)
+            # if summary.model == 'hr.employee':
+            #     Employee = self.env['hr.employee']
+            #     employee = Employee.search([('id', '=', reference_id)])
+            #     employee._employee_summary_setup(self.dir_path, self.file_name)
 
         return True
 
-    # @api.multi
     def do_populate_all_summaries(self):
         self.ensure_one()
 
