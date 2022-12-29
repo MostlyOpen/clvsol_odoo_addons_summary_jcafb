@@ -5,14 +5,14 @@
 {
     'name': 'Patient (Aux) Summary (for CLVhealth-JCAFB Solution)',
     'summary': 'Patient (Aux) Summary Module used in CLVhealth-JCAFB Solution.',
-    'version': '14.0.5.0',
+    'version': '15.0.6.0',
     'author': 'Carlos Eduardo Vercelino - CLVsol',
     'category': 'CLVsol Solutions',
     'license': 'AGPL-3',
     'website': 'https://github.com/CLVsol',
     'depends': [
         'clv_patient_aux_jcafb',
-        'clv_summary',
+        'clv_summary_jcafb',
     ],
     'data': [
         'security/ir.model.access.csv',
