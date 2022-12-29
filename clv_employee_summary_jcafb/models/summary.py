@@ -101,18 +101,18 @@ class Summary(models.Model):
 
         Document = self.env['clv.document']
         SummaryDocument = self.env['clv.summary.document']
-        LabTestRequest = self.env['clv.lab_test.request']
+        # LabTestRequest = self.env['clv.lab_test.request']
         LabTestResult = self.env['clv.lab_test.result']
-        LabTestReport = self.env['clv.lab_test.report']
-        SummaryLabTestRequest = self.env['clv.summary.lab_test.request']
+        # LabTestReport = self.env['clv.lab_test.report']
+        # SummaryLabTestRequest = self.env['clv.summary.lab_test.request']
         SummaryLabTestResult = self.env['clv.summary.lab_test.result']
-        SummaryLabTestReport = self.env['clv.summary.lab_test.report']
-        Address = self.env['clv.address']
-        SummaryAddress = self.env['clv.summary.address']
-        Family = self.env['clv.family']
-        SummaryFamily = self.env['clv.summary.family']
-        Person = self.env['clv.person']
-        SummaryPerson = self.env['clv.summary.person']
+        # SummaryLabTestReport = self.env['clv.summary.lab_test.report']
+        # Address = self.env['clv.address']
+        # SummaryAddress = self.env['clv.summary.address']
+        # Family = self.env['clv.family']
+        # SummaryFamily = self.env['clv.summary.family']
+        # Person = self.env['clv.person']
+        # SummaryPerson = self.env['clv.summary.person']
         Residence = self.env['clv.residence']
         SummaryResidence = self.env['clv.summary.residence']
         Patient = self.env['clv.patient']
@@ -123,35 +123,35 @@ class Summary(models.Model):
         ])
         summary_documents.unlink()
 
-        summary_lab_test_requests = SummaryLabTestRequest.search([
-            ('summary_id', '=', summary.id),
-        ])
-        summary_lab_test_requests.unlink()
+        # summary_lab_test_requests = SummaryLabTestRequest.search([
+        #     ('summary_id', '=', summary.id),
+        # ])
+        # summary_lab_test_requests.unlink()
 
         summary_lab_test_results = SummaryLabTestResult.search([
             ('summary_id', '=', summary.id),
         ])
         summary_lab_test_results.unlink()
 
-        summary_lab_test_reports = SummaryLabTestReport.search([
-            ('summary_id', '=', summary.id),
-        ])
-        summary_lab_test_reports.unlink()
+        # summary_lab_test_reports = SummaryLabTestReport.search([
+        #     ('summary_id', '=', summary.id),
+        # ])
+        # summary_lab_test_reports.unlink()
 
-        summary_addresses = SummaryAddress.search([
-            ('summary_id', '=', summary.id),
-        ])
-        summary_addresses.unlink()
+        # summary_addresses = SummaryAddress.search([
+        #     ('summary_id', '=', summary.id),
+        # ])
+        # summary_addresses.unlink()
 
-        summary_families = SummaryFamily.search([
-            ('summary_id', '=', summary.id),
-        ])
-        summary_families.unlink()
+        # summary_families = SummaryFamily.search([
+        #     ('summary_id', '=', summary.id),
+        # ])
+        # summary_families.unlink()
 
-        summary_persons = SummaryPerson.search([
-            ('summary_id', '=', summary.id),
-        ])
-        summary_persons.unlink()
+        # summary_persons = SummaryPerson.search([
+        #     ('summary_id', '=', summary.id),
+        # ])
+        # summary_persons.unlink()
 
         summary_residences = SummaryResidence.search([
             ('summary_id', '=', summary.id),
@@ -163,20 +163,20 @@ class Summary(models.Model):
         ])
         summary_patients.unlink()
 
-        search_domain = [
-            ('employee_id', '=', model_object.id),
-        ]
-        addresses = Address.search(search_domain)
+        # search_domain = [
+        #     ('employee_id', '=', model_object.id),
+        # ]
+        # addresses = Address.search(search_domain)
 
-        search_domain = [
-            ('employee_id', '=', model_object.id),
-        ]
-        families = Family.search(search_domain)
+        # search_domain = [
+        #     ('employee_id', '=', model_object.id),
+        # ]
+        # families = Family.search(search_domain)
 
-        search_domain = [
-            ('employee_id', '=', model_object.id),
-        ]
-        persons = Person.search(search_domain)
+        # search_domain = [
+        #     ('employee_id', '=', model_object.id),
+        # ]
+        # persons = Person.search(search_domain)
 
         search_domain = [
             ('employee_id', '=', model_object.id),
@@ -188,173 +188,173 @@ class Summary(models.Model):
         ]
         patients = Patient.search(search_domain)
 
-        for address in addresses:
+        # for address in addresses:
 
-            values = {
-                'summary_id': summary.id,
-                'address_id': address.id,
-            }
-            SummaryAddress.create(values)
+        #     values = {
+        #         'summary_id': summary.id,
+        #         'address_id': address.id,
+        #     }
+        #     SummaryAddress.create(values)
 
-            search_domain = [
-                ('ref_id', '=', 'clv.address' + ',' + str(address.id)),
-            ]
-            documents = Document.search(search_domain)
-            lab_test_requests = LabTestRequest.search(search_domain)
-            lab_test_results = LabTestResult.search(search_domain)
-            lab_test_reports = LabTestReport.search(search_domain)
+        #     search_domain = [
+        #         ('ref_id', '=', 'clv.address' + ',' + str(address.id)),
+        #     ]
+        #     documents = Document.search(search_domain)
+        #     lab_test_requests = LabTestRequest.search(search_domain)
+        #     lab_test_results = LabTestResult.search(search_domain)
+        #     lab_test_reports = LabTestReport.search(search_domain)
 
-            for document in documents:
+        #     for document in documents:
 
-                if document.phase_id.id == address.phase_id.id:
+        #         if document.phase_id.id == address.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'document_id': document.id,
-                    }
-                    SummaryDocument.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'document_id': document.id,
+        #             }
+        #             SummaryDocument.create(values)
 
-            for lab_test_request in lab_test_requests:
+        #     for lab_test_request in lab_test_requests:
 
-                if lab_test_request.phase_id.id == address.phase_id.id:
+        #         if lab_test_request.phase_id.id == address.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_request_id': lab_test_request.id,
-                    }
-                    SummaryLabTestRequest.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_request_id': lab_test_request.id,
+        #             }
+        #             SummaryLabTestRequest.create(values)
 
-            for lab_test_result in lab_test_results:
+        #     for lab_test_result in lab_test_results:
 
-                if lab_test_result.phase_id.id == address.phase_id.id:
+        #         if lab_test_result.phase_id.id == address.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_result_id': lab_test_result.id,
-                    }
-                    SummaryLabTestResult.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_result_id': lab_test_result.id,
+        #             }
+        #             SummaryLabTestResult.create(values)
 
-            for lab_test_report in lab_test_reports:
+        #     for lab_test_report in lab_test_reports:
 
-                if lab_test_report.phase_id.id == address.phase_id.id:
+        #         if lab_test_report.phase_id.id == address.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_report_id': lab_test_report.id,
-                    }
-                    SummaryLabTestReport.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_report_id': lab_test_report.id,
+        #             }
+        #             SummaryLabTestReport.create(values)
 
-        for family in families:
+        # for family in families:
 
-            values = {
-                'summary_id': summary.id,
-                'family_id': family.id,
-            }
-            SummaryFamily.create(values)
+        #     values = {
+        #         'summary_id': summary.id,
+        #         'family_id': family.id,
+        #     }
+        #     SummaryFamily.create(values)
 
-            search_domain = [
-                ('ref_id', '=', 'clv.family' + ',' + str(family.id)),
-            ]
-            documents = Document.search(search_domain)
-            lab_test_requests = LabTestRequest.search(search_domain)
-            lab_test_results = LabTestResult.search(search_domain)
-            lab_test_reports = LabTestReport.search(search_domain)
+        #     search_domain = [
+        #         ('ref_id', '=', 'clv.family' + ',' + str(family.id)),
+        #     ]
+        #     documents = Document.search(search_domain)
+        #     lab_test_requests = LabTestRequest.search(search_domain)
+        #     lab_test_results = LabTestResult.search(search_domain)
+        #     lab_test_reports = LabTestReport.search(search_domain)
 
-            for document in documents:
+        #     for document in documents:
 
-                if document.phase_id.id == family.phase_id.id:
+        #         if document.phase_id.id == family.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'document_id': document.id,
-                    }
-                    SummaryDocument.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'document_id': document.id,
+        #             }
+        #             SummaryDocument.create(values)
 
-            for lab_test_request in lab_test_requests:
+        #     for lab_test_request in lab_test_requests:
 
-                if lab_test_request.phase_id.id == family.phase_id.id:
+        #         if lab_test_request.phase_id.id == family.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_request_id': lab_test_request.id,
-                    }
-                    SummaryLabTestRequest.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_request_id': lab_test_request.id,
+        #             }
+        #             SummaryLabTestRequest.create(values)
 
-            for lab_test_result in lab_test_results:
+        #     for lab_test_result in lab_test_results:
 
-                if lab_test_result.phase_id.id == family.phase_id.id:
+        #         if lab_test_result.phase_id.id == family.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_result_id': lab_test_result.id,
-                    }
-                    SummaryLabTestResult.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_result_id': lab_test_result.id,
+        #             }
+        #             SummaryLabTestResult.create(values)
 
-            for lab_test_report in lab_test_reports:
+        #     for lab_test_report in lab_test_reports:
 
-                if lab_test_report.phase_id.id == family.phase_id.id:
+        #         if lab_test_report.phase_id.id == family.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_report_id': lab_test_report.id,
-                    }
-                    SummaryLabTestReport.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_report_id': lab_test_report.id,
+        #             }
+        #             SummaryLabTestReport.create(values)
 
-        for person in persons:
+        # for person in persons:
 
-            values = {
-                'summary_id': summary.id,
-                'person_id': person.id,
-            }
-            SummaryPerson.create(values)
+        #     values = {
+        #         'summary_id': summary.id,
+        #         'person_id': person.id,
+        #     }
+        #     SummaryPerson.create(values)
 
-            search_domain = [
-                ('ref_id', '=', 'clv.person' + ',' + str(person.id)),
-            ]
-            documents = Document.search(search_domain)
-            lab_test_requests = LabTestRequest.search(search_domain)
-            lab_test_results = LabTestResult.search(search_domain)
-            lab_test_reports = LabTestReport.search(search_domain)
+        #     search_domain = [
+        #         ('ref_id', '=', 'clv.person' + ',' + str(person.id)),
+        #     ]
+        #     documents = Document.search(search_domain)
+        #     lab_test_requests = LabTestRequest.search(search_domain)
+        #     lab_test_results = LabTestResult.search(search_domain)
+        #     lab_test_reports = LabTestReport.search(search_domain)
 
-            for document in documents:
+        #     for document in documents:
 
-                if document.phase_id.id == person.phase_id.id:
+        #         if document.phase_id.id == person.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'document_id': document.id,
-                    }
-                    SummaryDocument.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'document_id': document.id,
+        #             }
+        #             SummaryDocument.create(values)
 
-            for lab_test_request in lab_test_requests:
+        #     for lab_test_request in lab_test_requests:
 
-                if lab_test_request.phase_id.id == person.phase_id.id:
+        #         if lab_test_request.phase_id.id == person.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_request_id': lab_test_request.id,
-                    }
-                    SummaryLabTestRequest.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_request_id': lab_test_request.id,
+        #             }
+        #             SummaryLabTestRequest.create(values)
 
-            for lab_test_result in lab_test_results:
+        #     for lab_test_result in lab_test_results:
 
-                if lab_test_result.phase_id.id == person.phase_id.id:
+        #         if lab_test_result.phase_id.id == person.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_result_id': lab_test_result.id,
-                    }
-                    SummaryLabTestResult.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_result_id': lab_test_result.id,
+        #             }
+        #             SummaryLabTestResult.create(values)
 
-            for lab_test_report in lab_test_reports:
+        #     for lab_test_report in lab_test_reports:
 
-                if lab_test_report.phase_id.id == person.phase_id.id:
+        #         if lab_test_report.phase_id.id == person.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_report_id': lab_test_report.id,
-                    }
-                    SummaryLabTestReport.create(values)
+        #             values = {
+        #                 'summary_id': summary.id,
+        #                 'lab_test_report_id': lab_test_report.id,
+        #             }
+        #             SummaryLabTestReport.create(values)
 
         for residence in residences:
 
@@ -368,9 +368,9 @@ class Summary(models.Model):
                 ('ref_id', '=', 'clv.residence' + ',' + str(residence.id)),
             ]
             documents = Document.search(search_domain)
-            lab_test_requests = LabTestRequest.search(search_domain)
+            # lab_test_requests = LabTestRequest.search(search_domain)
             lab_test_results = LabTestResult.search(search_domain)
-            lab_test_reports = LabTestReport.search(search_domain)
+            # lab_test_reports = LabTestReport.search(search_domain)
 
             for document in documents:
 
@@ -382,15 +382,15 @@ class Summary(models.Model):
                     }
                     SummaryDocument.create(values)
 
-            for lab_test_request in lab_test_requests:
+            # for lab_test_request in lab_test_requests:
 
-                if lab_test_request.phase_id.id == residence.phase_id.id:
+            #     if lab_test_request.phase_id.id == residence.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_request_id': lab_test_request.id,
-                    }
-                    SummaryLabTestRequest.create(values)
+            #         values = {
+            #             'summary_id': summary.id,
+            #             'lab_test_request_id': lab_test_request.id,
+            #         }
+            #         SummaryLabTestRequest.create(values)
 
             for lab_test_result in lab_test_results:
 
@@ -402,15 +402,15 @@ class Summary(models.Model):
                     }
                     SummaryLabTestResult.create(values)
 
-            for lab_test_report in lab_test_reports:
+            # for lab_test_report in lab_test_reports:
 
-                if lab_test_report.phase_id.id == residence.phase_id.id:
+            #     if lab_test_report.phase_id.id == residence.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_report_id': lab_test_report.id,
-                    }
-                    SummaryLabTestReport.create(values)
+            #         values = {
+            #             'summary_id': summary.id,
+            #             'lab_test_report_id': lab_test_report.id,
+            #         }
+            #         SummaryLabTestReport.create(values)
 
         for patient in patients:
 
@@ -424,9 +424,9 @@ class Summary(models.Model):
                 ('ref_id', '=', 'clv.patient' + ',' + str(patient.id)),
             ]
             documents = Document.search(search_domain)
-            lab_test_requests = LabTestRequest.search(search_domain)
+            # lab_test_requests = LabTestRequest.search(search_domain)
             lab_test_results = LabTestResult.search(search_domain)
-            lab_test_reports = LabTestReport.search(search_domain)
+            # lab_test_reports = LabTestReport.search(search_domain)
 
             for document in documents:
 
@@ -438,15 +438,15 @@ class Summary(models.Model):
                     }
                     SummaryDocument.create(values)
 
-            for lab_test_request in lab_test_requests:
+            # for lab_test_request in lab_test_requests:
 
-                if lab_test_request.phase_id.id == patient.phase_id.id:
+            #     if lab_test_request.phase_id.id == patient.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_request_id': lab_test_request.id,
-                    }
-                    SummaryLabTestRequest.create(values)
+            #         values = {
+            #             'summary_id': summary.id,
+            #             'lab_test_request_id': lab_test_request.id,
+            #         }
+            #         SummaryLabTestRequest.create(values)
 
             for lab_test_result in lab_test_results:
 
@@ -458,15 +458,15 @@ class Summary(models.Model):
                     }
                     SummaryLabTestResult.create(values)
 
-            for lab_test_report in lab_test_reports:
+            # for lab_test_report in lab_test_reports:
 
-                if lab_test_report.phase_id.id == patient.phase_id.id:
+            #     if lab_test_report.phase_id.id == patient.phase_id.id:
 
-                    values = {
-                        'summary_id': summary.id,
-                        'lab_test_report_id': lab_test_report.id,
-                    }
-                    SummaryLabTestReport.create(values)
+            #         values = {
+            #             'summary_id': summary.id,
+            #             'lab_test_report_id': lab_test_report.id,
+            #         }
+            #         SummaryLabTestReport.create(values)
 
         summary_values = {}
         summary_values['date_summary'] = date_summary
@@ -479,8 +479,8 @@ class Summary(models.Model):
         model_object_name = model_object._name.replace('.', '_')
         model_object_code = model_object.code
 
-        AddressCategory = self.env['clv.address.category']
-        ResidenceCategory = self.env['clv.address.category']
+        # AddressCategory = self.env['clv.address.category']
+        ResidenceCategory = self.env['clv.residence.category']
 
         FileSystemDirectory = self.env['clv.file_system.directory']
         file_system_directory = FileSystemDirectory.search([
@@ -521,145 +521,145 @@ class Summary(models.Model):
         row.write(9, date_summary_local_str)
         row_nr += 2
 
-        col_address_category = 0
-        col_street2 = 2
-        col_address = 4
-        col_person = 6
+        # col_address_category = 0
+        # col_street2 = 2
+        # col_address = 4
+        # col_person = 6
 
-        address_categories = AddressCategory.search([])
-        for address_category in address_categories:
+        # address_categories = AddressCategory.search([])
+        # for address_category in address_categories:
 
-            sheet.write(row_nr, col_address_category, address_category.name, style=style_bold)
-            row_nr += 2
+        #     sheet.write(row_nr, col_address_category, address_category.name, style=style_bold)
+        #     row_nr += 2
 
-            street2s = []
-            for summary_address in summary.summary_address_ids:
-                if summary_address.address_category_ids.name == address_category.name:
-                    if summary_address.address_id.street2 not in street2s:
-                        street2s.append(summary_address.address_id.street2)
+        #     street2s = []
+        #     for summary_address in summary.summary_address_ids:
+        #         if summary_address.address_category_ids.name == address_category.name:
+        #             if summary_address.address_id.street2 not in street2s:
+        #                 street2s.append(summary_address.address_id.street2)
 
-            for street2 in street2s:
+        #     for street2 in street2s:
 
-                sheet.write(row_nr, col_street2, street2, style=style_bold)
-                row_nr += 2
+        #         sheet.write(row_nr, col_street2, street2, style=style_bold)
+        #         row_nr += 2
 
-                addresses = []
-                for summary_address in summary.summary_address_ids:
-                    if summary_address.address_id.street2 == street2 and \
-                       summary_address.address_id.state == 'selected':
-                        if summary_address.address_id not in addresses:
-                            addresses.append(summary_address.address_id)
+        #         addresses = []
+        #         for summary_address in summary.summary_address_ids:
+        #             if summary_address.address_id.street2 == street2 and \
+        #                summary_address.address_id.state == 'selected':
+        #                 if summary_address.address_id not in addresses:
+        #                     addresses.append(summary_address.address_id)
 
-                for address in addresses:
+        #         for address in addresses:
 
-                    sheet.write(row_nr, col_address, '[' + address.code + ']')
-                    sheet.write(row_nr, col_address + 7, address.name, style=style_bold)
-                    sheet.write(row_nr, col_address + 36, address.state, style=style_bold)
-                    row_nr += 2
+        #             sheet.write(row_nr, col_address, '[' + address.code + ']')
+        #             sheet.write(row_nr, col_address + 7, address.name, style=style_bold)
+        #             sheet.write(row_nr, col_address + 36, address.state, style=style_bold)
+        #             row_nr += 2
 
-                    families = []
-                    for summary_family in summary.summary_family_ids:
-                        if summary_family.family_id.ref_address_id == address:
-                            if summary_family.family_id not in families:
-                                families.append(summary_family.family_id)
+        #             families = []
+        #             for summary_family in summary.summary_family_ids:
+        #                 if summary_family.family_id.ref_address_id == address:
+        #                     if summary_family.family_id not in families:
+        #                         families.append(summary_family.family_id)
 
-                    for family in families:
+        #             for family in families:
 
-                        sheet.write(row_nr, col_address + 1, '[' + family.code + ']')
-                        sheet.write(row_nr, col_address + 1 + 7, family.name, style=style_bold)
-                        sheet.write(row_nr, col_address + 1 + 36, family.state, style=style_bold)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_address + 1, '[' + family.code + ']')
+        #                 sheet.write(row_nr, col_address + 1 + 7, family.name, style=style_bold)
+        #                 sheet.write(row_nr, col_address + 1 + 36, family.state, style=style_bold)
+        #                 row_nr += 2
 
-                    persons = []
-                    for summary_person in summary.summary_person_ids:
-                        if summary_person.person_id.ref_address_id == address and \
-                           summary_person.person_id.state == 'selected':
-                            if summary_person.person_id not in persons:
-                                persons.append(summary_person.person_id)
+        #             persons = []
+        #             for summary_person in summary.summary_person_ids:
+        #                 if summary_person.person_id.ref_address_id == address and \
+        #                    summary_person.person_id.state == 'selected':
+        #                     if summary_person.person_id not in persons:
+        #                         persons.append(summary_person.person_id)
 
-                    for person in persons:
+        #             for person in persons:
 
-                        sheet.write(row_nr, col_person, '[' + person.code + ']')
-                        sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
-                        sheet.write(row_nr, col_person + 30,
-                                    '(' + str(person.category_names) + ' - ' + person.age_reference_years + ')')
-                        sheet.write(row_nr, col_person + 37, person.state)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_person, '[' + person.code + ']')
+        #                 sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
+        #                 sheet.write(row_nr, col_person + 30,
+        #                             '(' + str(person.category_names) + ' - ' + person.age_reference_years + ')')
+        #                 sheet.write(row_nr, col_person + 37, person.state)
+        #                 row_nr += 2
 
-                    persons = []
-                    for summary_person in summary.summary_person_ids:
-                        if summary_person.person_id.ref_address_id == address and \
-                           summary_person.person_id.state == 'waiting':
-                            if summary_person.person_id not in persons:
-                                persons.append(summary_person.person_id)
+        #             persons = []
+        #             for summary_person in summary.summary_person_ids:
+        #                 if summary_person.person_id.ref_address_id == address and \
+        #                    summary_person.person_id.state == 'waiting':
+        #                     if summary_person.person_id not in persons:
+        #                         persons.append(summary_person.person_id)
 
-                    for person in persons:
+        #             for person in persons:
 
-                        sheet.write(row_nr, col_person, '[' + person.code + ']')
-                        sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
-                        sheet.write(row_nr, col_person + 30,
-                                    '(' + person.category_names + ' - ' + person.age_reference_years + ')')
-                        sheet.write(row_nr, col_person + 37, person.state)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_person, '[' + person.code + ']')
+        #                 sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
+        #                 sheet.write(row_nr, col_person + 30,
+        #                             '(' + person.category_names + ' - ' + person.age_reference_years + ')')
+        #                 sheet.write(row_nr, col_person + 37, person.state)
+        #                 row_nr += 2
 
-                addresses = []
-                for summary_address in summary.summary_address_ids:
-                    if summary_address.address_id.street2 == street2 and \
-                       summary_address.address_id.state == 'waiting':
-                        if summary_address.address_id not in addresses:
-                            addresses.append(summary_address.address_id)
+        #         addresses = []
+        #         for summary_address in summary.summary_address_ids:
+        #             if summary_address.address_id.street2 == street2 and \
+        #                summary_address.address_id.state == 'waiting':
+        #                 if summary_address.address_id not in addresses:
+        #                     addresses.append(summary_address.address_id)
 
-                for address in addresses:
+        #         for address in addresses:
 
-                    sheet.write(row_nr, col_address, '[' + address.code + ']')
-                    sheet.write(row_nr, col_address + 7, address.name, style=style_bold)
-                    sheet.write(row_nr, col_address + 36, address.state, style=style_bold)
-                    row_nr += 2
+        #             sheet.write(row_nr, col_address, '[' + address.code + ']')
+        #             sheet.write(row_nr, col_address + 7, address.name, style=style_bold)
+        #             sheet.write(row_nr, col_address + 36, address.state, style=style_bold)
+        #             row_nr += 2
 
-                    families = []
-                    for summary_family in summary.summary_family_ids:
-                        if summary_family.family_id.ref_address_id == address:
-                            if summary_family.family_id not in families:
-                                families.append(summary_family.family_id)
+        #             families = []
+        #             for summary_family in summary.summary_family_ids:
+        #                 if summary_family.family_id.ref_address_id == address:
+        #                     if summary_family.family_id not in families:
+        #                         families.append(summary_family.family_id)
 
-                    for family in families:
+        #             for family in families:
 
-                        sheet.write(row_nr, col_address + 1, '[' + family.code + ']')
-                        sheet.write(row_nr, col_address + 1 + 7, family.name, style=style_bold)
-                        sheet.write(row_nr, col_address + 1 + 36, family.state, style=style_bold)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_address + 1, '[' + family.code + ']')
+        #                 sheet.write(row_nr, col_address + 1 + 7, family.name, style=style_bold)
+        #                 sheet.write(row_nr, col_address + 1 + 36, family.state, style=style_bold)
+        #                 row_nr += 2
 
-                    persons = []
-                    for summary_person in summary.summary_person_ids:
-                        if summary_person.person_id.ref_address_id == address and \
-                           summary_person.person_id.state == 'selected':
-                            if summary_person.person_id not in persons:
-                                persons.append(summary_person.person_id)
+        #             persons = []
+        #             for summary_person in summary.summary_person_ids:
+        #                 if summary_person.person_id.ref_address_id == address and \
+        #                    summary_person.person_id.state == 'selected':
+        #                     if summary_person.person_id not in persons:
+        #                         persons.append(summary_person.person_id)
 
-                    for person in persons:
+        #             for person in persons:
 
-                        sheet.write(row_nr, col_person, '[' + person.code + ']')
-                        sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
-                        sheet.write(row_nr, col_person + 30,
-                                    '(' + person.category_names + ' - ' + person.age_reference_years + ')')
-                        sheet.write(row_nr, col_person + 37, person.state)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_person, '[' + person.code + ']')
+        #                 sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
+        #                 sheet.write(row_nr, col_person + 30,
+        #                             '(' + person.category_names + ' - ' + person.age_reference_years + ')')
+        #                 sheet.write(row_nr, col_person + 37, person.state)
+        #                 row_nr += 2
 
-                    persons = []
-                    for summary_person in summary.summary_person_ids:
-                        if summary_person.person_id.ref_address_id == address and \
-                           summary_person.person_id.state == 'waiting':
-                            if summary_person.person_id not in persons:
-                                persons.append(summary_person.person_id)
+        #             persons = []
+        #             for summary_person in summary.summary_person_ids:
+        #                 if summary_person.person_id.ref_address_id == address and \
+        #                    summary_person.person_id.state == 'waiting':
+        #                     if summary_person.person_id not in persons:
+        #                         persons.append(summary_person.person_id)
 
-                    for person in persons:
+        #             for person in persons:
 
-                        sheet.write(row_nr, col_person, '[' + person.code + ']')
-                        sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
-                        sheet.write(row_nr, col_person + 30,
-                                    '(' + person.category_names + ' - ' + person.age_reference_years + ')')
-                        sheet.write(row_nr, col_person + 37, person.state)
-                        row_nr += 2
+        #                 sheet.write(row_nr, col_person, '[' + person.code + ']')
+        #                 sheet.write(row_nr, col_person + 7, person.name, style=style_bold)
+        #                 sheet.write(row_nr, col_person + 30,
+        #                             '(' + person.category_names + ' - ' + person.age_reference_years + ')')
+        #                 sheet.write(row_nr, col_person + 37, person.state)
+        #                 row_nr += 2
 
         col_residence_category = 0
         col_street2 = 2
