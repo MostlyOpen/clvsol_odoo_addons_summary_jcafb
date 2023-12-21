@@ -19,6 +19,7 @@
         'data/patient_summary.xml',
         'views/summary_view.xml',
         'wizard/patient_summary_setup_view.xml',
+        'wizard/patient_mass_edit_view.xml',
     ],
     'demo': [],
     'test': [],
