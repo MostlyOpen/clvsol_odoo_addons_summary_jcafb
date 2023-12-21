@@ -19,6 +19,7 @@
         'data/employee_summary.xml',
         'views/summary_view.xml',
         'wizard/employee_summary_setup_view.xml',
+        'wizard/hr_employee_mass_edit_view.xml',
     ],
     'demo': [],
     'test': [],
