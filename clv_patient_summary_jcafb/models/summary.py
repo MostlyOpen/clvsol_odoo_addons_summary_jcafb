@@ -280,6 +280,11 @@ class Summary(models.Model):
             row.write(3, model_object.age_reference)
         row_nr += 1
         row = sheet.row(row_nr)
+        row.write(0, 'Gender:')
+        if model_object.gender is not False:
+            row.write(3, model_object.gender)
+        row_nr += 1
+        row = sheet.row(row_nr)
         row.write(0, 'Patient State:')
         row.write(3, model_object.state)
         row_nr += 1
