@@ -692,9 +692,12 @@ class Summary(models.Model):
 
                 for residence in residences:
 
-                    sheet.write(row_nr, col_residence, '[' + residence.code + ']')
-                    sheet.write(row_nr, col_residence + 7, residence.name, style=style_bold)
-                    sheet.write(row_nr, col_residence + 36, residence.state, style=style_bold)
+                    # sheet.write(row_nr, col_residence, '[' + residence.code + ']')
+                    # sheet.write(row_nr, col_residence + 7, residence.name, style=style_bold)
+                    # sheet.write(row_nr, col_residence + 6, residence.name, style=style_bold)
+                    sheet.write(row_nr, col_residence, residence.name, style=style_bold)
+                    # sheet.write(row_nr, col_residence + 36, residence.state, style=style_bold)
+                    sheet.write(row_nr, col_residence + 37, residence.state, style=style_bold)
                     row_nr += 2
 
                     patients = []
@@ -706,10 +709,19 @@ class Summary(models.Model):
 
                     for patient in patients:
 
+                        gender = patient.gender
+                        if gender is False:
+                            gender = ''
+
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
-                        sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 30,
-                                    '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
+                        # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        # sheet.write(row_nr, col_patient + 30,
+                        #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
+                        sheet.write(row_nr, col_patient + 28,
+                                    '(' + str(patient.category_names)
+                                    + ' - ' + patient.age_reference_years
+                                    + ' - ' + patient.gender + ')')
                         sheet.write(row_nr, col_patient + 37, patient.state)
                         row_nr += 2
 
@@ -722,10 +734,19 @@ class Summary(models.Model):
 
                     for patient in patients:
 
+                        gender = patient.gender
+                        if gender is False:
+                            gender = ''
+
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
-                        sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 30,
-                                    '(' + patient.category_names + ' - ' + patient.age_reference_years + ')')
+                        # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        # sheet.write(row_nr, col_patient + 30,
+                        #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
+                        sheet.write(row_nr, col_patient + 28,
+                                    '(' + str(patient.category_names)
+                                    + ' - ' + patient.age_reference_years
+                                    + ' - ' + patient.gender + ')')
                         sheet.write(row_nr, col_patient + 37, patient.state)
                         row_nr += 2
 
@@ -738,9 +759,12 @@ class Summary(models.Model):
 
                 for residence in residences:
 
-                    sheet.write(row_nr, col_residence, '[' + residence.code + ']')
-                    sheet.write(row_nr, col_residence + 7, residence.name, style=style_bold)
-                    sheet.write(row_nr, col_residence + 36, residence.state, style=style_bold)
+                    # sheet.write(row_nr, col_residence, '[' + residence.code + ']')
+                    # sheet.write(row_nr, col_residence + 7, residence.name, style=style_bold)
+                    # sheet.write(row_nr, col_residence + 6, residence.name, style=style_bold)
+                    sheet.write(row_nr, col_residence, residence.name, style=style_bold)
+                    # sheet.write(row_nr, col_residence + 36, residence.state, style=style_bold)
+                    sheet.write(row_nr, col_residence + 37, residence.state, style=style_bold)
                     row_nr += 2
 
                     patients = []
@@ -752,10 +776,19 @@ class Summary(models.Model):
 
                     for patient in patients:
 
+                        gender = patient.gender
+                        if gender is False:
+                            gender = ''
+
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
-                        sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 30,
-                                    '(' + patient.category_names + ' - ' + patient.age_reference_years + ')')
+                        # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        # sheet.write(row_nr, col_patient + 30,
+                        #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
+                        sheet.write(row_nr, col_patient + 28,
+                                    '(' + str(patient.category_names)
+                                    + ' - ' + patient.age_reference_years
+                                    + ' - ' + patient.gender + ')')
                         sheet.write(row_nr, col_patient + 37, patient.state)
                         row_nr += 2
 
@@ -768,10 +801,19 @@ class Summary(models.Model):
 
                     for patient in patients:
 
+                        gender = patient.gender
+                        if gender is False:
+                            gender = ''
+
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
-                        sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 30,
-                                    '(' + patient.category_names + ' - ' + patient.age_reference_years + ')')
+                        # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        # sheet.write(row_nr, col_patient + 30,
+                        #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
+                        sheet.write(row_nr, col_patient + 28,
+                                    '(' + str(patient.category_names)
+                                    + ' - ' + patient.age_reference_years
+                                    + ' - ' + gender + ')')
                         sheet.write(row_nr, col_patient + 37, patient.state)
                         row_nr += 2
 
