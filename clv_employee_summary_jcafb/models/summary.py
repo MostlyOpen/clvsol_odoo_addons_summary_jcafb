@@ -715,7 +715,7 @@ class Summary(models.Model):
 
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
                         # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 9, patient.name, style=style_bold)
                         # sheet.write(row_nr, col_patient + 30,
                         #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
                         sheet.write(row_nr, col_patient + 28,
@@ -740,7 +740,7 @@ class Summary(models.Model):
 
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
                         # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 9, patient.name, style=style_bold)
                         # sheet.write(row_nr, col_patient + 30,
                         #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
                         sheet.write(row_nr, col_patient + 28,
@@ -782,7 +782,7 @@ class Summary(models.Model):
 
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
                         # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 9, patient.name, style=style_bold)
                         # sheet.write(row_nr, col_patient + 30,
                         #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
                         sheet.write(row_nr, col_patient + 28,
@@ -807,7 +807,7 @@ class Summary(models.Model):
 
                         sheet.write(row_nr, col_patient, '[' + patient.code + ']')
                         # sheet.write(row_nr, col_patient + 7, patient.name, style=style_bold)
-                        sheet.write(row_nr, col_patient + 6, patient.name, style=style_bold)
+                        sheet.write(row_nr, col_patient + 9, patient.name, style=style_bold)
                         # sheet.write(row_nr, col_patient + 30,
                         #             '(' + str(patient.category_names) + ' - ' + patient.age_reference_years + ')')
                         sheet.write(row_nr, col_patient + 28,
